@@ -1,0 +1,32 @@
+{
+  "name": "ais_project_inventory_system",
+  "version": "1.0.0",
+  "description": "architecture project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aparece1241/AIS_PROJECT.git"
+  },
+  "author": "group 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aparece1241/AIS_PROJECT/issues"
+  },
+  "homepage": "https://github.com/aparece1241/AIS_PROJECT#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.9",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.6"
+  }
+}

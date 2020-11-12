@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--import jquery-3-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/register.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Add Product</title>
+</head>
+
+<body>
+    <div class="h-100" style="background-image:url(static/image/bg2.jpg);background-size:cover">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <br>
+                <br>
+                <br>
+                <div class="card-header">
+                    <center>
+                        <h3>Add New Product</h3>
+                        <h6 style="color:whitesmoke">Please fill in this form to add new product.</h6>
+                    </center>
+                </div>
+                <div class="card-body">
+                    <form>
+
+                        <div class="parent">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="productName" placeholder="Product Name"
+                                    required>
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="number" class="form-control" id="productPrice" placeholder="Product Price"
+                                    required>
+                            </div>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="number" class="form-control" id="quantity" placeholder="Quantity" required>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" value="Category:" readonly>
+                            <div>
+                                <select id="category" class="form-control">
+                                    <option value="grocery">GROCERY</option>
+                                    <option value="gadgets">GADGET</option>
+                                    <option value="clothes">CLOTHE</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" value="Add Product Image: " class="form-control" readonly>
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                            </div>
+                            <input type="file" id="file" class="form-control">
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="button" id="sub" value="Add Product" class="btn float-right login_btn">
+                            <input type="button" id="stocks" value="Stocks" class="btn float-left login_btn">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+        $(document).ready(() => {
+            var file = undefined;
+            $("#file").change((e) => {
+                file = e.target.files[0]
+            })
+
+            $("#sub").click(() => {
+                //getting the datas inputed
+                let productName = $("#productName").val();
+                let productPrice = $("#productPrice").val();
+                let category = $("#category").val();
+                let quantity = $("#quantity").val();
+
+                const data = {};
+                //takes the errors
+                let errors = {};
+
+                //validating the fields
+                (productName.length > 0) ? data["productName"] = productName : errors["productName"] = "Invalid Product name!";
+                (productPrice > 0) ? data["productPrice"] = productPrice : errors["productPrice"] = "Invalid Product price!";
+                (quantity > 0) ? data["quantity"] = quantity : errors["quantity"] = "Invalid quantity";
+                data["category"] = category;
+
+                console.log(errors);
+                if (Object.keys(errors).length > 0) {
+                    for (let key of Object.keys(errors)) {
+                        $(`#${key}`).val("");
+                        $(`#${key}`).css({ "border": "solid 2px red" });
+                        $(`#${key}`)[0].placeholder = errors[key];
+                    }
+                } else {
+                    var formData = new FormData();
+                    formData.append("productImage", file);
+
+                    //this works already
+                    apiRequest("/product/upload", "post", formData, "multipart/form-data")
+                        .then((filename) => {
+                            data["productImage"] = filename;
+                            console.log(data, filename);
+                            apiRequest("/product/add", "post", data)
+                                .then((product) => {
+                                    alert("Inserted new product");
+                                    window.location.href = `${editUrl(window.location.href)}stocks`;
+                                }).catch((error) => {
+                                    console.log(error);
+                                });
+
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>

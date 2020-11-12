@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- import jquery-3 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+  <title>Home</title>
+</head>
+
+<body>
+  <div class="w3-container" style="position:fixed;z-index:3;width:100%; margin-top:-50px;padding:20px;">
+    <div class="logo">
+      <img src="static/image/shop.png" class="logo">
+    </div>
+    <div class="dropdown" dropdown-toggle style="float:right;margin-right:30px">
+      <img src="static/image/user/avatar.png" title="Update Profile Pic" id="updateProfile" width="50px" height="50px"
+        class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" alt="" dropdown-toggle>
+      <span class="admin" type="button" aria-haspopup="true" aria-expanded="false" alt="" data-toggle="dropdown"><strong
+          id="username">Admin</strong></span>
+      <div class="dropdown-menu" style="margin-top:40px" aria-labelledby="dropdownMenu2">
+
+        <button class="dropdown-item" id="editProfile" type="button">Edit Profile</button>
+        <button class="dropdown-item" id="logout" type="button">Log Out</button>
+      </div>
+    </div>
+    <center>
+      <h1>SHOP INVENTORY SYSTEM</h1>
+    </center>
+  </div>
+  <!-- Sidebar -->
+  <div class="w3-sidebar text-white w3-bar-block" style="width:13%;margin-top:40px;background-color:#33353d;">
+    <h3 class="w3-bar-item mt-3">Menu</h3>
+    <a href="#" class="w3-bar-item w3-button" id="dashboard"><i class="fa fa-tachometer"
+        aria-hidden="true"><br></i>Dashboard</a>
+    <a href="#" class="w3-bar-item w3-button" id="stocks"><i class="fa fa-hand-spock-o"
+        aria-hidden="true"><br></i>Stocks</a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-money" aria-hidden="true"><br></i>Transactions</a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Products
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" id="gadgets" href="#">Gadgets</a>
+        <a class="dropdown-item" id="groceries" href="#">Groceries</a>
+        <a class="dropdown-item" id="clothes" href="#">Clothes</a>
+      </div>
+    </div>
+    <a href="#" class="w3-bar-item w3-button" id="users"><i class="fa fa-address-book"
+      aria-hidden="true"><br></i>Users</a>
+  </div>
+  <!-- DashBoard -->
+  <div class="container h-100 mr-3" style="margin-left:190px;">
+    <div class="d-flex flex-row mx-auto mt-5">
+      <div class="col-sm mt-5 col-hover">
+        <div class="card gr-1  mt-5">
+          <div class="txt text-center">
+            <h1>Top Selling </br></h1>
+            <p>Highest selling product category.</p>
+          </div>
+          <div class="ico-card">
+            <i class="fa fa-rebel"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm mt-5 col-hover">
+        <div class="card gr-2  mt-5">
+          <div class="txt text-center">
+            <h1>Monthly Sales </br></h1>
+            <p>Sales trends on a monthly basis. </p>
+          </div>
+          <div class="ico-card">
+            <i class="fa fa-codepen"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm mt-5  ml-2 col-hover">
+        <div class="card gr-3  mt-5">
+          <div class="txt text-center">
+            <h1>GROSS PROFIT</h1>
+            <p> The costs associated with providing its services.</p>
+          </div>
+          <div class="ico-card">
+            <i class="fa fa-empire"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Graph -->
+    <center>
+      <div id="chart-container"></div>
+    </center>
+  </div>
+</body>
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<script src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+<script src="/static/js/main.js"></script>
+<script>
+  $(document).ready(() => {
+
+    //this code is responsible for the charts
+    const dataSource = {
+      chart: {
+        caption: "Shop Sales Report ",
+        subcaption: "Shop Weekly Updates",
+        pyaxisname: "No. of Sales",
+        theme: "fusion",
+        showsecondarylimits: "0",
+        showdivlinesecondaryvalue: "0",
+        plottooltext:
+          " $label sales report is: <b>$dataValue</b> of the total <b>$sum</b>",
+        drawcrossline: "1"
+      },
+      data: [
+        {
+          label: "Mon.",
+          value: "5680"
+        },
+        {
+          label: "Tues.",
+          value: "1036"
+        },
+        {
+          label: "Wed.",
+          value: "950"
+        },
+        {
+          label: "Thurs.",
+          value: "500"
+        },
+        {
+          label: "Fri.",
+          value: "140"
+        },
+        {
+          label: "Sat.",
+          value: "68"
+        },
+        {
+          label: "Sun.",
+          value: "68"
+        },
+      ]
+    };
+
+    FusionCharts.ready(function () {
+      var myChart = new FusionCharts({
+        type: "pareto2d",
+        renderAt: "chart-container",
+        width: "100%",
+        height: "100%",
+        dataFormat: "json",
+        dataSource
+      }).render();
+    });
+  });
+
+
+</script>
+</body>
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 mt-50px">
+        <h6>About</h6>
+        <p class="text-justify"> <a href="home.hmtl">Shop Inventory System</a> <i>integrates all of your sales & inventory data into one
+            place. Shop now for your essentials at our store anytime and anywhere!</i></p>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Product Categories</h6>
+        <ul class="footer-links">
+          <li><a href="gadgets.html"></a>Gadgets</li>
+          <li><a href="groceries.html">Groceries</a></li>
+          <li><a href="clothes.html">Clothes</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Contribute</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+          <a href="#">Shop Inventory System</a>.
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>
